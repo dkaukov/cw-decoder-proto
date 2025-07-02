@@ -1,10 +1,10 @@
-package io.github.dkaukov.cw_decoder_proto;
+package io.github.dkaukov.cw_decoder_proto.fx;
 
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import io.github.dkaukov.cw_decoder_proto.atoms.StageReadyEvent;
+import io.github.dkaukov.cw_decoder_proto.Main;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;

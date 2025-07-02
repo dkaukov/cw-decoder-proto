@@ -6,7 +6,6 @@ import net.rgielen.fxweaver.core.FxWeaver;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import io.github.dkaukov.cw_decoder_proto.atoms.StageReadyEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;

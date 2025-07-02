@@ -1,4 +1,4 @@
-package io.github.dkaukov.cw_decoder_proto.atoms;
+package io.github.dkaukov.cw_decoder_proto.fx;
 
 import org.springframework.context.ApplicationEvent;
 
