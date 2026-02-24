@@ -76,10 +76,28 @@ class TCITrxStateTest {
   }
 
   @Test
+  void parseVfoGatewayExample() {
+    tciWebSocketHandler.parseMessage("trx_count:1;");
+    tciWebSocketHandler.parseMessage("channels_count:2;");
+    tciWebSocketHandler.parseMessage("vfo:0,1,1223123;");
+    assertEquals(1223123, tciTrxState.getTrx().get(0).getCh().get(1).getVfo());
+  }
+
+  @Test
   void parseModulation() {
     tciWebSocketHandler.parseMessage("trx_count:1;");
     tciWebSocketHandler.parseMessage("modulation:0,USB;");
     assertEquals("USB", tciTrxState.getTrx().get(0).getModulation());
+  }
+
+  @Test
+  void parseProtocolAndModulationGatewayExamples() {
+    tciWebSocketHandler.parseMessage("protocol:esdr,1.4;");
+    tciWebSocketHandler.parseMessage("trx_count:1;");
+    tciWebSocketHandler.parseMessage("modulation:0,ccb;");
+    assertEquals("esdr", tciTrxState.getProtocol());
+    assertEquals("1.4", tciTrxState.getProtocolVersion());
+    assertEquals("ccb", tciTrxState.getTrx().get(0).getModulation());
   }
 
   @Test
@@ -98,6 +116,50 @@ class TCITrxStateTest {
     tciWebSocketHandler.parseMessage("tx_enable:0,true;");
     assertFalse(tciTrxState.getTrx().get(0).isRxEnabled());
     assertTrue(tciTrxState.getTrx().get(0).isTxEnabled());
+  }
+
+  @Test
+  void parseReady() {
+    tciWebSocketHandler.parseMessage("ready;");
+    assertTrue(tciTrxState.isReady());
+  }
+
+  @Test
+  void parsePowerAndLimits() {
+    tciWebSocketHandler.parseMessage("tx_power:16.5;");
+    tciWebSocketHandler.parseMessage("tx_swr:1.25;");
+    tciWebSocketHandler.parseMessage("if_limits:-25000,25000;");
+    assertEquals(16.5f, tciTrxState.getTxPower());
+    assertEquals(1.25f, tciTrxState.getTxSwr());
+    assertEquals(-25000, tciTrxState.getIfMin());
+    assertEquals(25000, tciTrxState.getIfMax());
+  }
+
+  @Test
+  void parseTrxTuneMuteAndSmeter() {
+    tciWebSocketHandler.parseMessage("trx_count:1;");
+    tciWebSocketHandler.parseMessage("channels_count:1;");
+    tciWebSocketHandler.parseMessage("trx:0,true;");
+    tciWebSocketHandler.parseMessage("tune:0,true;");
+    tciWebSocketHandler.parseMessage("rx_mute:0,true;");
+    tciWebSocketHandler.parseMessage("rx_smeter:0,0,-87;");
+    assertTrue(tciTrxState.getTrx().get(0).isActive());
+    assertTrue(tciTrxState.getTrx().get(0).isTune());
+    assertTrue(tciTrxState.getTrx().get(0).isMute());
+    assertEquals(-87, tciTrxState.getTrx().get(0).getCh().get(0).getSignal());
+  }
+
+  @Test
+  void parseDriveLegacyAndPerTrx() {
+    tciWebSocketHandler.parseMessage("trx_count:1;");
+    tciWebSocketHandler.parseMessage("drive:35.5;");
+    tciWebSocketHandler.parseMessage("tune_drive:12.0;");
+    tciWebSocketHandler.parseMessage("drive:0,21.5;");
+    tciWebSocketHandler.parseMessage("tune_drive:0,8.5;");
+    assertEquals(35.5f, tciTrxState.getTxPowerPct());
+    assertEquals(12.0f, tciTrxState.getTunePowerPct());
+    assertEquals(21.5f, tciTrxState.getTrx().get(0).getTxPowerPct());
+    assertEquals(8.5f, tciTrxState.getTrx().get(0).getTunePowerPct());
   }
 
   @Test
