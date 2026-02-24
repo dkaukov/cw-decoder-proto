@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPFsk extends Library {
   LiquidDSPFsk INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPFsk.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPFsk.class);
 
   final class Fskdem extends PointerType {}
 

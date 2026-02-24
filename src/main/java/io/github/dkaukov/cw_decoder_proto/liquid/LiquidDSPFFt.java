@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPFFt extends Library {
 
-    LiquidDSPFFt INSTANCE = NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPFFt.class);
+    LiquidDSPFFt INSTANCE = NativeLibLoader.loadLiquidDsp(LiquidDSPFFt.class);
 
     // Direction constants
     int LIQUID_FFT_FORWARD = 0;

@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPResamp extends Library {
   LiquidDSPResamp INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPResamp.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPResamp.class);
 
   final class ResampCrcf extends PointerType {}
 

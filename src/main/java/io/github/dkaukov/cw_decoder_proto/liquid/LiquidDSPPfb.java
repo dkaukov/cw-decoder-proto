@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPPfb extends Library {
 
-    LiquidDSPPfb INSTANCE = NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPPfb.class);
+    LiquidDSPPfb INSTANCE = NativeLibLoader.loadLiquidDsp(LiquidDSPPfb.class);
 
     // Constants for _type argument
     int LIQUID_ANALYZER = 0;

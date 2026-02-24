@@ -5,7 +5,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPIirFilt extends Library {
   LiquidDSPIirFilt INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPIirFilt.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPIirFilt.class);
 
   final class IirfiltCrcf extends PointerType {}
 

@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPSymsync extends Library {
   LiquidDSPSymsync INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPSymsync.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPSymsync.class);
 
   // filter type for rnyquist
   int LIQUID_FIRFILT_RRC = 5; // (value per liquid-dsp enum)

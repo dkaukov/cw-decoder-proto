@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPSPGram extends Library {
   LiquidDSPSPGram INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPSPGram.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPSPGram.class);
 
   final class Spgramcf extends PointerType {}
 

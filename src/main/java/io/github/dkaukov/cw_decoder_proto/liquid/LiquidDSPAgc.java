@@ -5,7 +5,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPAgc extends Library {
   LiquidDSPAgc INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPAgc.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPAgc.class);
 
   // squelch statuses (mirror liquid-dsp)
   int LIQUID_AGC_SQUELCH_ENABLED = 1;

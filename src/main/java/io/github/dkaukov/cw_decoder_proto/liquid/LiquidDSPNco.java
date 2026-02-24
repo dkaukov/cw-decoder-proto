@@ -5,7 +5,7 @@ import com.sun.jna.PointerType;
 
 public interface LiquidDSPNco extends Library {
   LiquidDSPNco INSTANCE =
-    NativeLibLoader.loadFromResource("native/macos-aarch64/libliquid.dylib", LiquidDSPNco.class);
+    NativeLibLoader.loadLiquidDsp(LiquidDSPNco.class);
 
   int LIQUID_NCO = 0; // real NCO type (matches liquid enum)
 
