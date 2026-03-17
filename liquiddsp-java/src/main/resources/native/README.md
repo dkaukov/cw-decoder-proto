@@ -23,7 +23,11 @@ To build and add other platforms with Docker:
 - `liquiddsp-java/scripts/build-linux-aarch64.sh`
 - `liquiddsp-java/scripts/build-windows-x86_64.sh`
 - `liquiddsp-java/scripts/build-windows-aarch64.sh`
+- `liquiddsp-java/scripts/build-macos-aarch64.sh`
 - `liquiddsp-java/scripts/build-all.sh`
+
+The macOS script builds LiquidDSP from source instead of copying a Homebrew binary.
+That avoids a runtime dependency on Homebrew `fftw` and forces LiquidDSP's internal FFT path.
 
 The scripts default to LiquidDSP `v1.7.0`. Override with:
 
